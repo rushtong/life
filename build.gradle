@@ -1,0 +1,48 @@
+repositories {
+    maven { url 'https://jitpack.io' }
+}
+
+apply plugin: 'idea'
+apply plugin: 'java'
+
+dependencies {
+    compile 'org.spockframework.spock:spock-core:spock-1.1'
+    compile 'org.spockframework.spock:spock-spring:spock-1.1'
+    compile group: 'junit', name: 'junit', version: '4.12'
+    testCompile group: 'org.springframework', name: 'spring-test', version: '5.0.3.RELEASE'
+}
+
+group 'org.rushton'
+version '1.0-SNAPSHOT'
+
+apply plugin: 'groovy'
+apply plugin: 'java'
+apply plugin: 'application'
+
+mainClassName = "org.rushton.life.Life"
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+
+dependencies {
+    compile 'org.codehaus.groovy:groovy-all:2.3.11'
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+
+    // Logging
+    compile group: 'org.slf4j', name:'slf4j-api', version: '1.7.25'
+    compile group: 'ch.qos.logback', name:'logback-classic', version: "1.2.3"
+
+    // https://mvnrepository.com/artifact/org.apache.commons/commons-math3
+    compile group: 'org.apache.commons', name: 'commons-math3', version: '3.2'
+
+}
+
+test {
+    testLogging {
+        events "passed", "skipped", "failed"
+    }
+}
